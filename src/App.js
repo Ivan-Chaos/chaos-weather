@@ -4,18 +4,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import MyNav from './MyNav'
 
 const requestLocation=(address)=>{
-  fetch('http://www.mapquestapi.com/geocoding/v1/address?key=8suf7hRMemfAQsghMd2GCUzCO9FOLCXG', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded', },
-    body: JSON.stringify({outFormat: "json", location: address})
-    }
-  ).then(response => response.json())
-  .then(result => {
-    console.table(result);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+  let geocodingUrl = new URL("http://www.mapquestapi.com/geocoding/v1/address");
+  let params={key: "NCDLJUZnhamst8I0OaMxyC6dEr7SXpCP", location: address};
+  geocodingUrl.search= new URLSearchParams(params).toString();
+  
+  fetch(geocodingUrl)
+  .then(response => response.json())
+  .then(data => console.log(data));
   
 }
 
