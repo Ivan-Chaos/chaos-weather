@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import {Navbar, Container, Form, FormControl, Button} from 'react-bootstrap'
 import { FcGlobe } from 'react-icons/fc';
 
 
-const MyNav = () => {
-    const [town, setTown]=useState('');
+const MyNav = ({town, setTown}) => {
     
     
     const requestLocation=(address)=>{
